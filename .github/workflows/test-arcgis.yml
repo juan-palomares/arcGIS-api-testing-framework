@@ -1,0 +1,74 @@
+name: ArcGIS API Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    # Run tests daily at 9 AM UTC
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+
+jobs:
+  test-core:
+    name: Test Core ArcGIS Functionality
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.10", "3.11"]
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Verify ArcGIS API installation
+        run: |
+          python -c "import arcgis; print(f'ArcGIS API version: {arcgis.__version__}')"
+      
+      - name: Run core API tests
+        run: |
+          python -m unittest test_arcgis_core.py -v
+      
+      - name: Run feature layer tests
+        run: |
+          python -m unittest test_arcgis_features.py -v
+
+  integration-test:
+    name: Integration Test Suite
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Run all tests
+        run: |
+          python -m unittest discover -s . -p "test_*.py" -v
+      
+      - name: Generate test summary
+        if: always()
+        run: |
+          echo "## Test Summary" >> $GITHUB_STEP_SUMMARY
+          echo "✅ ArcGIS API for Python automated tests completed" >> $GITHUB_STEP_SUMMARY
+          echo "Python version: 3.11" >> $GITHUB_STEP_SUMMARY
