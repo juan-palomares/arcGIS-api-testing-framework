@@ -59,16 +59,16 @@ pip install -r requirements.txt
 
 # Verify installation
 python -c "import arcgis; print(f'✅ ArcGIS API version: {arcgis.__version__}')"
-
-🧪 Running Tests
+```
+## 🧪 Running Tests
 Run All Tests
-
+```
 Bash
 
 python -m unittest discover -v
-
+```
 Run Specific Test Suites
-
+```
 Bash
 
 # Core API tests
@@ -76,19 +76,19 @@ python -m unittest test_arcgis_core.py -v
 
 # Feature layer tests
 python -m unittest test_arcgis_features.py -v
-
+```
 Run Individual Test Classes
-
+```
 Bash
 
 python -m unittest test_arcgis_core.TestGeocoding -v
-
-📊 Test Coverage
+```
+## 📊 Test Coverage
 Test Suite	Tests	Coverage
 Core API	12 tests	Connection, Geocoding, Search, Geometry
 Feature Services	6 tests	Queries, Filtering, Metadata
 Total	18 tests	Comprehensive API validation
-🔄 CI/CD Pipeline
+## 🔄 CI/CD Pipeline
 Automated Workflows
 
 On Every Push:
@@ -108,16 +108,16 @@ Manual Trigger:
     On-demand test execution via GitHub Actions UI
 
 Workflow Configuration
-
+```
 YAML
 
 # Runs on: push, pull_request, schedule, workflow_dispatch
 strategy:
   matrix:
     python-version: ["3.9", "3.10", "3.11"]
-
+```
 📝 Sample Test Output
-
+```
 text
 
 test_arcgis_version (test_arcgis_core.TestAPIVersion.test_arcgis_version)
@@ -163,8 +163,8 @@ Ran 19 tests in 6.196s
 
 OK
 
-
-🗺️ APIs Tested
+```
+## 🗺️ APIs Tested
 Public Endpoints
 
     ArcGIS Online - Anonymous connection
@@ -180,7 +180,7 @@ Tested Operations
     Geometry creation
     Metadata access
 
-📚 What I Learned
+## 📚 What I Learned
 ArcGIS API Concepts
 
     GIS object lifecycle and connection management
@@ -206,7 +206,7 @@ Python Best Practices
     Assertions and validation
     Error handling in tests
 
-🎯 DevOps Skills Demonstrated
+## 🎯 DevOps Skills Demonstrated
 
 ✅ API Testing - Comprehensive endpoint validation
 ✅ CI/CD Automation - GitHub Actions workflows
@@ -223,12 +223,12 @@ Python Best Practices
     Add spatial analysis operations tests
     Integrate with ArcGIS Enterprise endpoints
 
-🔗 Related Projects
+## 🔗 Related Projects
 
     python-calculator-cicd - Basic CI/CD concepts
     api-health-checker - Scheduled API monitoring
 
-📧 Contact
+## 📧 Contact
 
 Juan Palomares
 GitHub: @juan-palomares
