@@ -67,7 +67,7 @@ class TestFeatureServices(unittest.TestCase):
     def test_query_multiple_records(self):
         """Test querying varying record counts."""
         for count in [5, 10, 20]:
-            feature_set = self.countries_layer.query(where="1=1", result_record_count=count)
+            feature_set = self.countries_layer.query(where="1=1", result_record_count=count, return_all_records=False)
             self.assertGreater(len(feature_set.features), 0)
             self.assertLessEqual(len(feature_set.features), count)
 
