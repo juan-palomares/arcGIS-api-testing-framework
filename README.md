@@ -59,8 +59,8 @@ pip install -r requirements.txt
 
 # Verify installation
 python -c "import arcgis; print(f'✅ ArcGIS API version: {arcgis.__version__}')"
-```
-## 🧪 Running Tests
+
+🧪 Running Tests
 Run All Tests
 ```
 Bash
@@ -68,7 +68,7 @@ Bash
 python -m unittest discover -v
 ```
 Run Specific Test Suites
-```
+
 Bash
 
 # Core API tests
@@ -78,7 +78,7 @@ python -m unittest test_arcgis_core.py -v
 python -m unittest test_arcgis_features.py -v
 ```
 Run Individual Test Classes
-```
+
 Bash
 
 python -m unittest test_arcgis_core.TestGeocoding -v
@@ -162,9 +162,10 @@ Test querying features with SQL where clause. ... ok
 Ran 19 tests in 6.196s
 
 OK
-
 ```
-## 🗺️ APIs Tested
+
+
+🗺️ APIs Tested
 Public Endpoints
 
     ArcGIS Online - Anonymous connection
